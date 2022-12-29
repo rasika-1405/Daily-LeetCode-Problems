@@ -34,7 +34,4 @@ class Solution:
         
         rev_str = x_str[::-1]
         
-        if rev_str == x_str:
-            return True
-        
-        return False
+        return rev_str == x_str
