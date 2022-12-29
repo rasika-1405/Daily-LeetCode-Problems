@@ -28,9 +28,11 @@ class Solution:
 #                 start += 1
 #                 end -= 1
 
-        rev_str = ""
-        for each in range(x_len-1, -1, -1):
-            rev_str += x_str[each]
+        # rev_str = ""
+        # for each in range(x_len-1, -1, -1):
+        #     rev_str += x_str[each]
+        
+        rev_str = x_str[::-1]
         
         if rev_str == x_str:
             return True
