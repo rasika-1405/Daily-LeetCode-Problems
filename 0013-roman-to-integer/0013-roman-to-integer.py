@@ -11,13 +11,13 @@ class Solution:
         rom_int = {"I" : 1, "V" : 5, "X" : 10, "L" : 50, "C" : 100, 
                    "D" : 500, "M" : 1000}
         str_len = len(s)
-        int_value = rom_int[s[str_len-1]]
+        int_value = 0
         
-        for i in range(str_len - 2, -1, -1):
+        for i in range(0, str_len-1):
             if rom_int[s[i]] >= rom_int[s[i+1]]:
                 int_value += rom_int[s[i]]
             else:
                 int_value -= rom_int[s[i]]
+        int_value += rom_int[s[str_len-1]]
         
         return int_value
-        
