@@ -33,7 +33,7 @@ class Solution:
         while low <= high:
             mid = low+(high-low) // 2
             if nums[mid] == target:
-                if mid == high or nums[mid] < nums[mid+1]:
+                if mid == len(nums)-1 or nums[mid] < nums[mid+1]:
                     return mid
                 else:
                     low = mid + 1
