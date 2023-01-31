@@ -13,10 +13,10 @@ class Solution:
         if n<=0:
             return False
         
-        out = str(bin(n))[2:]
+        binary_value = str(bin(n))[2:]
         count = 0
-        for i in range(len(out)):
-            if out[i] == '1':
+        for i in range(len(binary_value)):
+            if binary_value[i] == '1':
                 count += 1
             if count > 1:
                 return False
