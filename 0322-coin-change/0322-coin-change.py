@@ -7,7 +7,8 @@ class Solution:
         m = len(coins)
         n = amount
         # dp = matrix of M+1, N+1
-        dp = [[0]*(n+1)]*(m+1)
+        # dp = [[0]*(n+1)]*(m+1)
+        dp = [[0 for _ in range(n+1)] for _ in range(m+1)]
         
         # dp[0][0] = 0
         for j in range(1, len(dp[0])):
