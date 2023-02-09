@@ -21,6 +21,7 @@ class Solution:
                 low += 1
             else:
                 mid += 1
+        return
         
                 
     def swap(self, nums, i, j):
