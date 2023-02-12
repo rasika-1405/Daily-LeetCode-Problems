@@ -21,36 +21,50 @@ class Solution:
                         
         # using two pointers
         
-        result = []
-        nums = sorted(nums)
-        for i in range(n-2):
-            if nums[i] > 0:
-                break
-            # outside duplicacy
-            if i!=0 and nums[i] == nums[i-1]:
-                continue
-            low = i+1
-            high = n-1
+#         result = []
+#         nums = sorted(nums)
+#         for i in range(n-2):
+#             if nums[i] > 0:
+#                 break
+#             # outside duplicacy
+#             if i!=0 and nums[i] == nums[i-1]:
+#                 continue
+#             low = i+1
+#             high = n-1
             
-            while low<high:
-                total = nums[i] + nums[low] + nums[high]
-                if total == 0:
-                    l1 = [nums[i], nums[low], nums[high]]
-                    result.append(l1)
-                    low +=1
-                    high -= 1
+#             while low<high:
+#                 total = nums[i] + nums[low] + nums[high]
+#                 if total == 0:
+#                     l1 = [nums[i], nums[low], nums[high]]
+#                     result.append(l1)
+#                     low +=1
+#                     high -= 1
                     
-                    # inner duplicacy
-                    while low<high and nums[low] == nums[low-1]:
-                        low += 1
-                    while low<high and nums[high] == nums[high+1]:
-                        high -= 1
-                elif total > 0:
-                    high -= 1
+#                     # inner duplicacy
+#                     while low<high and nums[low] == nums[low-1]:
+#                         low += 1
+#                     while low<high and nums[high] == nums[high+1]:
+#                         high -= 1
+#                 elif total > 0:
+#                     high -= 1
+#                 else:
+#                     low += 1
+
+        # using hashing
+    
+        result_set = set()
+        
+        for i in range(n-1):
+            comp = 0 - nums[i]
+            hash_set = set()
+            for j in range(i+1, n):
+                k = comp - nums[j]
+                if k in hash_set:
+                    res = sorted([nums[i], nums[j], k])
+                    res = tuple(res)
+                    result_set.add(res)
                 else:
-                    low += 1
-            
-                        
-        return result
+                    hash_set.add(nums[j])
+        return result_set
                         
         
