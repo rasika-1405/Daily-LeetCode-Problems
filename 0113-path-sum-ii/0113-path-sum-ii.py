@@ -7,7 +7,7 @@
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
         
-        def helper(root, path, curr_sum, target):
+        def helper(root, curr_sum, target):
             # base case
             if root == None:
                 return
@@ -16,17 +16,18 @@ class Solution:
             curr_sum += root.val
             # temp = path
             # print(temp)
-            path.append(root.val)
+            self.path.append(root.val)
             if root.left == None and root.right == None:
                 if curr_sum == target:
-                    path_copy = path.copy()
+                    path_copy = self.path.copy()
                     self.result.append(path_copy)
-            helper(root.left, path, curr_sum, target)
-            helper(root.right, path, curr_sum, target)
-            path.pop()
+            helper(root.left, curr_sum, target)
+            helper(root.right, curr_sum, target)
+            self.path.pop()
         
+        self.path = []
         self.result = []
-        helper(root, [], 0, targetSum)
+        helper(root, 0, targetSum)
         return self.result
     
     
