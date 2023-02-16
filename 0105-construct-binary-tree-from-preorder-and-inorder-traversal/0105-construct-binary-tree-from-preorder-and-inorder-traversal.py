@@ -21,9 +21,9 @@ class Solution:
                 break
         
         in_left = inorder[:index]
-        pre_left = preorder[1:index+1]
+        pre_left = preorder[1:len(in_left)+1]
         in_right = inorder[index+1:]
-        pre_right = preorder[index+1:]
+        pre_right = preorder[len(in_left)+1:]
         
         root.left = self.buildTree(pre_left, in_left)
         root.right = self.buildTree(pre_right, in_right)
