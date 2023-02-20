@@ -27,7 +27,7 @@ class Solution:
             fast = fast.next.next
         
         head2 = reverse(slow)
-        slow.next = None
+        # slow.next = None
         curr = head
         
         while curr != None and head2 != None:
