@@ -5,11 +5,7 @@
 #         self.left = left
 #         self.right = right
 
-# arr = [1,2,3,4]
-# max = -inf
-# for i in range(len(arr)):
-#     max = max(arr[i], max)
-# return max
+
 class Solution:
     def largestValues(self, root: Optional[TreeNode]) -> List[int]:
         result = []
@@ -18,19 +14,31 @@ class Solution:
         if root is None:
             return result
         
-        queue = deque([root])
+        # BFS
+#         queue = deque([root])
         
-        while queue:
-            level = len(queue)
-            max_val = -inf
-            for i in range(level):
-                curr = queue.popleft()
-                max_val = max(curr.val, max_val)
-                if curr.left:
-                    queue.append(curr.left)
-                if curr.right:
-                    queue.append(curr.right)
-            result.append(max_val)
+#         while queue:
+#             level = len(queue)
+#             max_val = -inf
+#             for i in range(level):
+#                 curr = queue.popleft()
+#                 max_val = max(curr.val, max_val)
+#                 if curr.left:
+#                     queue.append(curr.left)
+#                 if curr.right:
+#                     queue.append(curr.right)
+#             result.append(max_val)
             
+        # DFS
+        def DFS(root, depth):
+            if root is None:
+                return result
+            if len(result) <= depth:
+                result.append(-inf)
+            result[depth] = max(root.val, result[depth])
+            DFS(root.left, depth+1)
+            DFS(root.right, depth+1)
+            
+        DFS(root, 0)
+        
         return result
-                
