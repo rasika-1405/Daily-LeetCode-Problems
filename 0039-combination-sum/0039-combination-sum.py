@@ -15,14 +15,14 @@ class Solution:
         if amount < 0 or i == len(candidates):
             return
         if amount == 0:
-            self.result.append(path)
+            temp = path.copy()
+            self.result.append(temp)
             return
         
         # logic
         # not choose
-        temp = path.copy()
-        self.helper(candidates, i+1, amount, temp)
+        self.helper(candidates, i+1, amount, path)
         # choose
-        path.append(candidates[i])
-        temp = path.copy()
-        self.helper(candidates, i, amount-candidates[i], temp)
+        path.append(candidates[i]) # action
+        self.helper(candidates, i, amount-candidates[i], path) # recurse
+        path.pop() # backtrack
