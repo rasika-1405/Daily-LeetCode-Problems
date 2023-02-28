@@ -43,15 +43,14 @@ class Solution:
         if amount < 0:
             return
         if amount == 0:
-            temp = path.copy()
-            self.result.append(temp)
+            self.result.append(path)
             return
         
         # logic
         for i in range(pivot, len(candidates)):
-            path.append(candidates[i])  #action
-            self.helper(candidates, i, amount-candidates[i], path)  #recurse
-            path.pop()  #backtrack
+            temp = path.copy()
+            temp.append(candidates[i])
+            self.helper(candidates, i, amount-candidates[i], temp)
         
         
         
