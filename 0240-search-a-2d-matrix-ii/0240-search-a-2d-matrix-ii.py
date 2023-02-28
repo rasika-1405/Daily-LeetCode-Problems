@@ -18,7 +18,7 @@ class Solution:
 #             else:
 #                 i += 1
                 
-        # two pointers i & j starting from top right corner  
+        # two pointers i & j starting from bottom left corner  
         i, j = (m-1), 0
         
         while i>=0 and j<n:
