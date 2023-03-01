@@ -2,7 +2,7 @@ class Solution:
     result = []
     def addOperators(self, num: str, target: int) -> List[str]:
         self.result = []
-        self.helper(num, 0, target, "", 0, 0)
+        self.helper(num, 0, target, [], 0, 0)
         return self.result
     
     
@@ -10,7 +10,7 @@ class Solution:
         # base case
         if pivot == len(num):
             if calculated_val == target:
-                self.result.append(path)
+                self.result.append("".join(path))
         
         # logic - for loop recursion
         for i in range(pivot, len(num)):
@@ -21,23 +21,22 @@ class Solution:
             curr = int(num[pivot:i+1])
             # need to handle first level separation (no operators)
             if pivot == 0:
-                #action
-                path = "".join(path + str(curr))
-                self.helper(num, i+1, target, path, curr, curr)
-                path = path[:length]
+                path.append(str(curr)) #action
+                self.helper(num, i+1, target, path, curr, curr) #recurse
+                path = path[:length] #backtrack
             else:
                 # case +
-                path = path + "+"
-                path = "".join(path + str(curr))
-                self.helper(num, i+1, target, path, calculated_val+curr, +curr)
-                path = path[:length]
+                path.append("+") #action
+                path.append(str(curr))
+                self.helper(num, i+1, target, path, calculated_val+curr, +curr) #recurse
+                path = path[:length] #backtrack
                 # case -
-                path = path + "-"
-                path = "".join(path + str(curr))
-                self.helper(num, i+1, target, path, calculated_val-curr, -curr)
-                path = path[:length]
+                path.append("-") #action
+                path.append(str(curr))
+                self.helper(num, i+1, target, path, calculated_val-curr, -curr) #recurse
+                path = path[:length] #backtrack
                 # case *
-                path = path + "*"
-                path = "".join(path + str(curr))
-                self.helper(num, i+1, target, path, calculated_val-tail_val+tail_val*curr, tail_val*curr)
-                path = path[:length]
+                path.append("*") #action
+                path.append(str(curr))
+                self.helper(num, i+1, target, path, calculated_val-tail_val+tail_val*curr, tail_val*curr) #recurse
+                path = path[:length] #backtrack
