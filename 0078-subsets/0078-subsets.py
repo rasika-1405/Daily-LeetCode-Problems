@@ -29,10 +29,10 @@ class Solution:
     # using for-loop recursion
     def helper(self, nums, pivot, path):
         # no base case
-        
-        self.result.append(path)
+        temp = path.copy()
+        self.result.append(temp)
         # logic
         for i in range(pivot, len(nums)):
-            temp = path.copy()
-            temp.append(nums[i])
-            self.helper(nums, i+1, temp)
+            path.append(nums[i]) # action
+            self.helper(nums, i+1, path) # recurse
+            path.pop() # backtrack
