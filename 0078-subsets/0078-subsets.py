@@ -7,7 +7,17 @@ class Solution:
         if nums is None:
             return self.result
         
-        self.helper(nums, 0, [])
+        # without using recursion
+        self.result.append([])
+        
+        for i in range(len(nums)):
+            # res_size = len(self.result)
+            for j in range(len(self.result)):
+                temp = self.result[j].copy()
+                temp.append(nums[i])
+                self.result.append(temp)
+        
+        # self.helper(nums, 0, [])
         return self.result
     
     # brute force
@@ -27,11 +37,12 @@ class Solution:
 #         path.pop() # backtrack
 
     # using for-loop recursion
-    def helper(self, nums, pivot, path):
-        # no base case
-        self.result.append(path.copy())
-        # logic
-        for i in range(pivot, len(nums)):
-            path.append(nums[i]) # action
-            self.helper(nums, i+1, path) # recurse
-            path.pop() # backtrack
+#     def helper(self, nums, pivot, path):
+#         # no base case
+#         self.result.append(path.copy())
+#         # logic
+#         for i in range(pivot, len(nums)):
+#             path.append(nums[i]) # action
+#             self.helper(nums, i+1, path) # recurse
+#             path.pop() # backtrack
+            
