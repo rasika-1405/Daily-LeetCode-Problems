@@ -10,18 +10,29 @@ class Solution:
         self.helper(nums, 0, [])
         return self.result
     
-    
-    def helper(self, nums, idx, path):
-        # base case
-        if idx == len(nums):
-            temp = path.copy()
-            self.result.append(temp)
-            return
+    # brute force
+#     def helper(self, nums, idx, path):
+#         # base case
+#         if idx == len(nums):
+#             temp = path.copy()
+#             self.result.append(temp)
+#             return
         
+#         # logic
+#         # not choose
+#         self.helper(nums, idx+1, path)
+#         # choose
+#         path.append(nums[idx]) # action
+#         self.helper(nums, idx+1, path) # recurse
+#         path.pop() # backtrack
+
+    # using for-loop recursion
+    def helper(self, nums, pivot, path):
+        # no base case
+        
+        self.result.append(path)
         # logic
-        # not choose
-        self.helper(nums, idx+1, path)
-        # choose
-        path.append(nums[idx]) # action
-        self.helper(nums, idx+1, path) # recurse
-        path.pop() # backtrack
+        for i in range(pivot, len(nums)):
+            temp = path.copy()
+            temp.append(nums[i])
+            self.helper(nums, i+1, temp)
