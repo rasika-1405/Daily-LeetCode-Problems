@@ -29,8 +29,7 @@ class Solution:
     # using for-loop recursion
     def helper(self, nums, pivot, path):
         # no base case
-        temp = path.copy()
-        self.result.append(temp)
+        self.result.append(path.copy())
         # logic
         for i in range(pivot, len(nums)):
             path.append(nums[i]) # action
