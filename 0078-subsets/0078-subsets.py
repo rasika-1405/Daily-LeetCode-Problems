@@ -11,8 +11,8 @@ class Solution:
         self.result.append([])
         
         for i in range(len(nums)):
-            # res_size = len(self.result)
-            for j in range(len(self.result)):
+            res_size = len(self.result)
+            for j in range(res_size):
                 temp = self.result[j].copy()
                 temp.append(nums[i])
                 self.result.append(temp)
