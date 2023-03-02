@@ -14,11 +14,14 @@ class Solution:
     def helper(self, nums, idx, path):
         # base case
         if idx == len(nums):
-            self.result.append(path)
+            temp = path.copy()
+            self.result.append(temp)
             return
         
         # logic
-        self.helper(nums, idx+1, path.copy()) # not choose
-        temp = path.copy()
-        temp.append(nums[idx])
-        self.helper(nums, idx+1, temp) # choose
+        # not choose
+        self.helper(nums, idx+1, path)
+        # choose
+        path.append(nums[idx]) # action
+        self.helper(nums, idx+1, path) # recurse
+        path.pop() # backtrack
