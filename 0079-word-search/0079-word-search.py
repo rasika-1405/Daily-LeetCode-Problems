@@ -1,6 +1,6 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        dirs = [[1,0], [-1,0], [0,1], [0,-1]]
+        dirs = [[1,0], [-1,0], [0,-1], [0,1]]
         # null case
         if board is None:
             return False
@@ -12,14 +12,14 @@ class Solution:
             # base case
             if idx == len(word):
                 return True
-            if i<0 or j<0 or i==m or j == n or board[i][j] == "#":
+            if i<0 or j<0 or i==m or j==n or board[i][j] == "*":
                 return False
             
             # logic
             if board[i][j] == word[idx]:
                 #action
                 char = board[i][j]
-                board[i][j] = "#"
+                board[i][j] = "*"  # marked as visited
                 
                 #recurse
                 for dirn in dirs:
