@@ -1,13 +1,8 @@
 class Solution:
-    # m = 0
-    # result = []
     def solveNQueens(self, n: int) -> List[List[str]]:
         result = []
         m = n
         board = [[False for _ in range(n)] for _ in range(n)]
-#         backtrack(board, 0)
-#         return self.result
-    
     
         def backtrack(board, r):
             # base case
