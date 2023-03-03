@@ -14,13 +14,13 @@ class Solution:
         if r == self.m:
             res = []
             for i in range(self.m):
-                sb = ""
+                temp = []
                 for j in range(self.m):
                     if board[i][j]:
-                        sb += "Q"
+                        temp.append("Q")
                     else:
-                        sb += "."
-                res.append(sb)
+                        temp.append(".")
+                res.append("".join(temp))
             self.result.append(res)
                 
         
