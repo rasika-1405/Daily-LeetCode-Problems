@@ -5,7 +5,7 @@ class TrieNode:
         
 class Solution:
     def __init__(self):
-        self.root = TrieNode()
+        self.root = None
 
     def insert(self, word: str) -> None:
         curr = self.root
