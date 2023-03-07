@@ -34,7 +34,6 @@ class NestedIterator:
         
     def hasNext(self) -> bool:
         s = self.stk
-        
         while s:
             nested_list, iterator = s[-1]
             if iterator == len(nested_list):
