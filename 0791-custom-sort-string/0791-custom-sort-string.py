@@ -23,6 +23,6 @@ class Solution:
         for key in char_map:
             count = char_map[key]
             for k in range(count):
-                result += key
+                result += key        
         
         return result
