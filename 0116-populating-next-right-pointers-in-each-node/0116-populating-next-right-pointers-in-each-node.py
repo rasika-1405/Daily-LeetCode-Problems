@@ -39,19 +39,29 @@ class Solution:
         #     level = level.left
         
         # using DFS
-        def dfs(left, right):
+        def dfs1(left, right):
             # base case
             if left is None:
                 return
             
             # logic
             left.next = right
-            dfs(left.left, left.right)
-            dfs(left.right, right.left)
-            dfs(right.left, right.right)
+            dfs1(left.left, left.right)
+            dfs1(left.right, right.left)
+            dfs1(right.left, right.right)
+            
+        def dfs2(root):
+            # base case
+            if root.left is None:
+                return
+            root.left.next = root.right
+            if root.next:
+                root.right.next = root.next.left
+            dfs2(root.left)
+            dfs2(root.right)
         
-        dfs(root.left, root.right)
-        
+        # dfs1(root.left, root.right)
+        dfs2(root)
         
         return root
                 
