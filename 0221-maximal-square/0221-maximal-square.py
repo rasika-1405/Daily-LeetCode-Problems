@@ -29,6 +29,7 @@ class Solution:
         #                     k+=1
         #             max_sq = max(max_sq, k)
         
+        # Using an extra array
         # dp = [[0 for _ in range(n+1)] for _ in range(m+1)]
         # for i in range(1, m+1):
         #     for j in range(1, n+1):
@@ -36,13 +37,13 @@ class Solution:
         #             dp[i][j] = 1 + min(dp[i-1][j], dp[i-1][j-1], dp[i][j-1])
         #             max_sq = max(max_sq, dp[i][j])
         
+        # Populating the same array
         for i in range(m):
             if matrix[i][0] == '1':
                 max_sq = 1
         for j in range(n):
             if matrix[0][j] == '1':
                 max_sq = 1
-                
         for i in range(1, m):
             for j in range(1, n):
                 if matrix[i][j] == '1':
