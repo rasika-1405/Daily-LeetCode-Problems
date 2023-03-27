@@ -14,4 +14,3 @@ class Solution:
             profit = prices[i+1] - prices[i]
             max_profit += profit
         return max_profit
-        
