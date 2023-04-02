@@ -22,10 +22,5 @@ class Solution:
         else:
             result = stk
             
-        #removing leading zeros
-        # res = int(result)
-        
         return str(int("".join(result)))
             
-                
-        
