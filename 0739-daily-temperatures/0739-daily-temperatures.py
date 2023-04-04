@@ -9,10 +9,10 @@ class Solution:
         
         temp_stk = []
         for i in range(n):
-            while temp_stk and temperatures[i]>temp_stk[-1][0]:
-                temp, idx = temp_stk.pop()
+            while temp_stk and temperatures[i]>temperatures[temp_stk[-1]]:
+                idx = temp_stk.pop()
                 result[idx] = i - idx
-            temp_stk.append([temperatures[i], i])
+            temp_stk.append(i)
         
         return result
                 
