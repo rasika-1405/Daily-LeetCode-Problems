@@ -1,6 +1,14 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        # Using Stack
+        
+        # null case
+        if s is None:
+            return True
+        
+        # optimization
+        if len(s)%2 != 0:
+            return False
+        
         stk = []
         
         # Dictionary for matching parenthesis
@@ -8,11 +16,8 @@ class Solution:
         
         for bracket in s:
             if bracket in paren:
-                stk.append(bracket)
+                stk.append(paren[bracket])
             else:
-                if len(stk) == 0:
-                    return False
-                open_brkt = stk.pop()
-                if bracket != paren[open_brkt]:
+                if len(stk) == 0 or bracket != stk.pop():
                     return False
         return len(stk) == 0
