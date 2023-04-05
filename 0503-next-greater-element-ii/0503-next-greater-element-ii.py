@@ -14,5 +14,8 @@ class Solution:
                 result[curr] = nums[i%n]
             if i<n:
                 stk.append(i)
+            # optimization
+            if i>=n and stk[-1] == i%n:
+                break
         
         return result
