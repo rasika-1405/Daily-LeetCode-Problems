@@ -5,20 +5,20 @@ class Solution:
             return True
         
         # Using BFS
-        queue = deque([0])
-        visited = set()
-        visited.add(0)
+#         queue = deque([0])
+#         visited = set()
+#         visited.add(0)
         
-        while queue:
-            i = queue.popleft()
-            for j in range(nums[i], 0, -1):
-                new_idx = i+j
-                if new_idx>=n:
-                    return True
-                if new_idx not in visited:
-                    queue.append(new_idx)
-                    visited.add(new_idx)
-        return False
+#         while queue:
+#             i = queue.popleft()
+#             for j in range(nums[i], 0, -1):
+#                 new_idx = i+j
+#                 if new_idx>=n:
+#                     return True
+#                 if new_idx not in visited:
+#                     queue.append(new_idx)
+#                     visited.add(new_idx)
+#         return False
         
         # Using DFS
 #         dp = [-1 for _ in range(len(nums))]
