@@ -14,7 +14,7 @@ class Solution:
             size = len(queue)
             for k in range(size):
                 i = queue.popleft()
-                for j in range(1, nums[i]+1):
+                for j in range(nums[i], -1, -1):
                     new_idx = i+j
                     if new_idx>=len(nums)-1:
                         return jumps
