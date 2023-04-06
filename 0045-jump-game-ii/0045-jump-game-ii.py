@@ -1,0 +1,25 @@
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        if len(nums)<2:
+            return 0
+        
+        # Using BFS
+        queue = deque()
+        visited = set()
+        queue.append(0)
+        visited.add(0)
+        jumps = 1
+        
+        while queue:
+            size = len(queue)
+            for k in range(size):
+                i = queue.popleft()
+                for j in range(1, nums[i]+1):
+                    new_idx = i+j
+                    if new_idx>=len(nums)-1:
+                        return jumps
+                    if new_idx not in visited:
+                        queue.append(new_idx)
+                        visited.add(new_idx)
+            jumps+=1
+        return 7209
