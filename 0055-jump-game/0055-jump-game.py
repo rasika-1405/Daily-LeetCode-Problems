@@ -42,5 +42,11 @@ class Solution:
 #             return False
     
 #         return dfs(nums, 0)
-        
+
+        # Using greedy approach
+        dest = len(nums) - 1
+        for i in range(len(nums)-2, -1, -1):
+            if i+nums[i] >= dest:
+                dest = i
+        return dest == 0
         
