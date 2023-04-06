@@ -4,25 +4,25 @@ class Solution:
             return 0
         
         # Using BFS
-#         queue = deque()
-#         visited = set()
-#         queue.append(0)
-#         visited.add(0)
-#         jumps = 1
+        queue = deque()
+        visited = set()
+        queue.append(0)
+        visited.add(0)
+        jumps = 1
         
-#         while queue:
-#             size = len(queue)
-#             for k in range(size):
-#                 i = queue.popleft()
-#                 for j in range(nums[i], -1, -1):
-#                     new_idx = i+j
-#                     if new_idx>=len(nums)-1:
-#                         return jumps
-#                     if new_idx not in visited:
-#                         queue.append(new_idx)
-#                         visited.add(new_idx)
-#             jumps+=1
-#         return 7209
+        while queue:
+            size = len(queue)
+            for k in range(size):
+                i = queue.popleft()
+                for j in range(nums[i], -1, -1):
+                    new_idx = i+j
+                    if new_idx>=len(nums)-1:
+                        return jumps
+                    if new_idx not in visited:
+                        queue.append(new_idx)
+                        visited.add(new_idx)
+            jumps+=1
+        return 7209
 
         # Using DFS
 #         min_jump = inf
@@ -41,14 +41,14 @@ class Solution:
 #         return min_jump
 
         # Using greedy approach
-        curr_interval = nums[0]
-        next_interval = nums[0]
-        jumps = 1
+#         curr_interval = nums[0]
+#         next_interval = nums[0]
+#         jumps = 1
         
-        for i in range(1, len(nums)):
-            next_interval = max(next_interval, nums[i]+i)
-            if i == curr_interval and i!=len(nums)-1:
-                jumps+=1
-                curr_interval = next_interval
+#         for i in range(1, len(nums)):
+#             next_interval = max(next_interval, nums[i]+i)
+#             if i == curr_interval and i!=len(nums)-1:
+#                 jumps+=1
+#                 curr_interval = next_interval
         
-        return jumps
+#         return jumps
