@@ -14,4 +14,10 @@ class Solution:
 #                 return num
             
         # Using set
-        return 2* sum(set(nums)) - sum(nums)
+        # return 2* sum(set(nums)) - sum(nums)
+    
+        # Optimal solution - ExOR
+        num = 0
+        for i in nums:
+            num ^= i
+        return num
