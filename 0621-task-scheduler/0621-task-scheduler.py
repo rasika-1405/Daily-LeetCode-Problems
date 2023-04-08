@@ -4,6 +4,9 @@ class Solution:
         if tasks is None:
             return 0
         
+        if n == 0:
+            return len(tasks)
+        
         freq_map = defaultdict(int)
         max_freq = 0
         
