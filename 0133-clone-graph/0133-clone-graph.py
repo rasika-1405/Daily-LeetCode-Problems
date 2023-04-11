@@ -34,13 +34,14 @@ class Solution:
         # Using DFS
         def dfs(node):
             # base case
+            if node in node_map:
+                return
             
             # logic
             deep_copy = Node(node.val)
             node_map[node] = deep_copy
             for neighbor in node.neighbors:
-                if neighbor not in node_map:
-                    dfs(neighbor)
+                dfs(neighbor)
                 node_map[node].neighbors.append(node_map[neighbor])
                 
         dfs(node)
