@@ -20,35 +20,37 @@ class Solution:
             return count == 0
         
         # Using BFS
-        queue = deque()
-        string_set = set()
-        queue.append(s)
-        string_set.add(s)
-        flag = False
+#         queue = deque()
+#         string_set = set()
+#         queue.append(s)
+#         string_set.add(s)
+#         flag = False
         
-        while queue and not flag:
-            size = len(queue)
-            for i in range(size):
-                curr = queue.popleft()
-                if validate_string(curr):
-                    result.append(curr)
-                    flag = True
-                if not flag:
-                    for j in range(len(curr)):
-                        c = curr[j]
-                        if c.isalpha():
-                            continue
-                        child = curr[:j]+curr[j+1:]
-                        if child not in string_set:
-                            queue.append(child)
-                            string_set.add(child)
-        return result
+#         while queue and not flag:
+#             size = len(queue)
+#             for i in range(size):
+#                 curr = queue.popleft()
+#                 if validate_string(curr):
+#                     result.append(curr)
+#                     flag = True
+#                 if not flag:
+#                     for j in range(len(curr)):
+#                         c = curr[j]
+#                         if c.isalpha():
+#                             continue
+#                         child = curr[:j]+curr[j+1:]
+#                         if child not in string_set:
+#                             queue.append(child)
+#                             string_set.add(child)
+#         return result
     
         # Using DFS
         max_len = 0
         string_set = set()
         
         def dfs(t):
+            nonlocal max_len
+            nonlocal result
             # base case
             if t in string_set or len(t) < max_len:
                 return
