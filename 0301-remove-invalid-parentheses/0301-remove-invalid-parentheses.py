@@ -6,7 +6,6 @@ class Solution:
         if s is None:
             return result
         
-        # Using BFS
         def validate_string(t):
             count = 0
             for char in t:
@@ -20,6 +19,7 @@ class Solution:
                     return False
             return count == 0
         
+        # Using BFS
         queue = deque()
         string_set = set()
         queue.append(s)
@@ -42,6 +42,35 @@ class Solution:
                         if child not in string_set:
                             queue.append(child)
                             string_set.add(child)
+        return result
+    
+        # Using DFS
+        max_len = 0
+        string_set = set()
+        
+        def dfs(t):
+            # base case
+            if t in string_set or len(t) < max_len:
+                return
+            if (validate_string(t)):
+                if len(t) > max_len:
+                    max_len = len(t)
+                    result = []
+                    result.append(t)
+                elif len(t) == max_len:
+                    result.append(t)
+                string_set.add(t)
+            
+            # logic
+            string_set.add(t)
+            for j in range(len(t)):
+                c = t[j]
+                if c.isalpha():
+                    continue
+                child = t[:j]+t[j+1:]
+                dfs(child)
+                
+        dfs(s)
         return result
                 
                 
