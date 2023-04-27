@@ -32,7 +32,7 @@ class Solution:
             hash_code = hash_code*4 + hash_map[in_char]
             # outgoing character
             out_char = s[i-10]
-            hash_code = hash_code - hash_map[out_char]*pow(4, 10)
+            hash_code = hash_code - hash_map[out_char]*int(pow(4, 10))
             if hash_code in seen:
                 result.add(s[i-9:i+1])
             else:
