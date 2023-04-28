@@ -5,14 +5,16 @@ class Solution:
             return s
         
         n = len(s)
-        dp = [[False for _ in range(n)] for _ in range(n)]
+        dp = [False for _ in range(n)]
         start, end = 0, 0
         
         for i in range(n):
             for j in range(i+1):
-                if s[i] == s[j] and ((i-j<2) or dp[i-1][j+1]):
-                    dp[i][j] = True
+                if s[i] == s[j] and ((i-j<2) or dp[j+1]):
+                    dp[j] = True
                     if i-j > end-start:
                         start = j
                         end = i
+                else:
+                    dp[j] = False
         return s[start:end+1]
