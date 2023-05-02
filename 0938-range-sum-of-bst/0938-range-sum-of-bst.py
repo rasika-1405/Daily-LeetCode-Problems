@@ -30,11 +30,13 @@ class Solution:
                 return 0
             
             # logic
-            temp=0
-            left = helper2(root.left, low, high)
+            temp, left, right =0, 0,0
+            if root.left is not None and root.val>low:
+                left = helper2(root.left, low, high)
             if root.val >= low and root.val <= high:
                 temp = root.val
-            right = helper2(root.right, low, high)
+            if root.right is not None and root.val<high:
+                right = helper2(root.right, low, high)
             return temp+left+right
             
         return helper2(root, low, high)
