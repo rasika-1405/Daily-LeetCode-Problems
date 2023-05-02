@@ -15,10 +15,12 @@ class Solution:
                 return
             
             # logic
-            helper(root.left, low, high)
+            if root.left is not None and root.val>=low:
+                helper(root.left, low, high)
             if root.val >= low and root.val <= high:
                 result+=root.val
-            helper(root.right, low, high)
+            if root.right is not None and root.val<high:
+                helper(root.right, low, high)
             
         helper(root, low, high)
         return result
