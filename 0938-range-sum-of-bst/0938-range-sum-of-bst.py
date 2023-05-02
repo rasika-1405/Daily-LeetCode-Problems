@@ -38,7 +38,19 @@ class Solution:
             if root.right is not None and root.val<high:
                 right = helper2(root.right, low, high)
             return temp+left+right
+        
+        # Iterative method
+        stk = []
+        stk.append(root)
+        while stk:
+            root = stk.pop()
+            if root.val >= low and root.val <= high:
+                result+=root.val
+            if root.right is not None:
+                stk.append(root.right)
+            if root.left is not None:
+                stk.append(root.left)
             
-        return helper2(root, low, high)
+        # return helper2(root, low, high)
         # helper(root, low, high)
-        # return result
+        return result
